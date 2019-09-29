@@ -2,6 +2,8 @@
 
 Turns an identifier string (`0-9A-Za-z_-`) into a unique integer id.
 
+> This package hasn't been tested in production yet, it may currently have collision issues
+
 ## Why?
 
 This is meant to reduce the amount of bytes transferred for string id's during client-server communication.
