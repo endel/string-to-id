@@ -1,0 +1,17 @@
+{
+  "name": "stringid",
+  "version": "1.0.0",
+  "description": "Get a unique number for an identifier name.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha --require ts-node/register test/**Test.ts"
+  },
+  "author": "Endel Dreyer",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  }
+}
