@@ -1,6 +1,6 @@
-# stringid
+# string-to-id
 
-Turns an identifier string (`/0-9A-Za-z_-/`) into a unique number.
+Turns an identifier string (`0-9A-Za-z_-`) into a unique integer id.
 
 ## Why?
 
@@ -9,9 +9,9 @@ This is meant to reduce the amount of bytes transferred for string id's during c
 ## Usage
 
 ```typescript
-import stringid from "stringid";
+import strtoid from "string-to-id";
 
-stringid("someId");
+strtoid("someId");
 // => 16326
 ```
 

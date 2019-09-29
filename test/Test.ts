@@ -1,11 +1,11 @@
 import assert from "assert";
-import stringid from "../src";
+import strtoid from "../src";
 
 describe("stringid", () => {
 
   it("should be deterministic", () => {
-    assert.equal(stringid("someId"), stringid("someId"));
-    assert.equal(stringid("someId"), 16326);
+    assert.equal(strtoid("someId"), strtoid("someId"));
+    assert.equal(strtoid("someId"), 16326);
   });
 
   it("max number limit", () => {
@@ -13,16 +13,16 @@ describe("stringid", () => {
     for (let i = 0; i < 1000; i++) { // who will ever need an identifier higher than this? ¯\_(ツ)_/¯
       longId += "z";
     }
-    assert.ok(stringid(longId) < Number.MAX_SAFE_INTEGER);
+    assert.ok(strtoid(longId) < Number.MAX_SAFE_INTEGER);
   });
 
   it("shouldn't collide", () => {
     console.log({
-      someId: stringid("someId"),
-      collision: stringid("aohr08Id")
+      someId: strtoid("someId"),
+      collision: strtoid("aohr08Id")
     });
 
-    assert.notEqual(stringid("someId"), stringid("anotherId"));
+    assert.notEqual(strtoid("someId"), strtoid("anotherId"));
   });
 
 });
