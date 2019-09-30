@@ -1,6 +1,6 @@
 # string-to-id
 
-Turns an identifier string (`0-9A-Za-z_-`) into a unique integer id.
+Turns an identifier string (`0-9a-z_-`) into a unique integer id. Upper-case characters are treated as lower-case.
 
 > This package hasn't been tested in production yet, it may currently have collision issues
 
@@ -14,7 +14,7 @@ This is meant to reduce the amount of bytes transferred for string id's during c
 import strtoid from "string-to-id";
 
 strtoid("someId");
-// => 16326
+// => 2883
 ```
 
 ## Possibility of string collisions
