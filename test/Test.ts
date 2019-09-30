@@ -22,24 +22,34 @@ describe("stringid", () => {
 
   it("should be deterministic", () => {
     assert.equal(strtoid("someId"), strtoid("someId"));
-    assert.equal(strtoid("someId"), 16326);
+    assert.equal(strtoid("someId"), 2883);
+    // assert.equal(strtoid("someId"), 16326);
   });
 
   it("max number limit", () => {
     let longId = "";
-    for (let i = 0; i < 1000; i++) { // who will ever need an identifier higher than this? ¯\_(ツ)_/¯
+
+    for (let i = 0; i < 10000; i++) { // who will ever need an identifier higher than this? ¯\_(ツ)_/¯
       longId += "z";
     }
+
     assert.ok(strtoid(longId) < Number.MAX_SAFE_INTEGER);
+  });
+
+  it("should consider only lowercase characters", () => {
+    assert.equal(strtoid("HELLO WORLD"), strtoid("hello world"));
   });
 
   it("shouldn't collide", () => {
     const comparisons: {[key: string]: string} = {
+      "01": "10",
+      "ab": "ba",
+      "ba": "ac",
       "BABABA" : "ababab",
       "ababab" : "bababa",
-      "ba": "ac",
-      "WW": "aO"
-    }
+      "aO": "WW",
+      "WW": "aW",
+    };
 
     for (let left in comparisons) {
       const right = comparisons[left];
@@ -48,11 +58,11 @@ describe("stringid", () => {
     }
   });
 
-  xit("shouldn't collide", function () {
+  xit("bruteforce", function () {
     this.timeout(Infinity);
 
-    const CHARS = 'abcdefghijklmnopqrstuvxyzw1234567890_-ABCDEFGHIJKLMNOPQRSTUVXYZW';
-    const MAX_STRING_LENGTH = 2;
+    const CHARS = 'abcdefghijklmnopqrstuvxyzw1234567890_-'; // ABCDEFGHIJKLMNOPQRSTUVXYZW
+    const MAX_STRING_LENGTH = 5;
 
     function createFor(d: string, q: number, cb: any) {
       var a = d.split('');
